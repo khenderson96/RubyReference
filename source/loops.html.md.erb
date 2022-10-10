@@ -1,0 +1,43 @@
+---
+title: Loops, Blocks, Functions
+---
+
+#Loops, Conditionals, Functions, and Blocks
+
+
+###Conditionals:
+* if <%=bracketize "condition"%> ... elsif <%=bracketize "condition"%> ... end
+* case <%=bracketize "expression"%> when <%=bracketize "condition"%> ... else ... end
+* <%=bracketize "statement"%> if <%=bracketize "condition"%>
+* <%=bracketize "statement"%> unless <%=bracketize "condition"%>
+
+###Loops:
+* while <%=bracketize "condition"%> do ... end
+* until <%=bracketize "condition"%> do ... end
+* for <%=bracketize "obj"%> in <%=bracketize "array"%> do ... end
+* <%=bracketize "collection"%>.each do \|<%=bracketize "variable"%>\|
+
+###Blocks:
+* Blocks are statements passed as function arguments
+* Blocks are often used to iterate arrays and hashes
+* <%=bracketize "integer" %>.**times do{**...**}**  
+#=> executes '...' <%=bracketize "integer" %> times
+* <%=bracketize "collection" %>.**each {**\|<%=bracketize "variable" %>\| ... *(one line)* **}**  
+#=> executes '(one line)' on each element of <%=bracketize "collection" %>
+* <%=bracketize "collection" %>.**each do** \|<%=bracketize "variable" %>\| ... *(multiple lines)* **end**  
+#=> executes '(multiple lines)' on each element of <%=bracketize "collection" %>
+* **def** *func_name* **(** *params* **)**  
+        ... **yield** *block_of_params* **if block_given?** ...  
+    end  
+#=> function that uses a block
+
+###Functions:
+* called with dot notation e.g. array.push 7
+* basic function:
+    *  **def** *func_name* **(** *params* **)** ... **end**
+* function with parameters called by name
+    *  **def** *func_name* **(** *param1:*, *param2: default_value* **)** ... **end**
+
+
+
+
