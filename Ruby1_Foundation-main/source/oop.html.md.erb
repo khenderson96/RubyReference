@@ -1,0 +1,55 @@
+---
+title: OOP Concepts
+---
+
+#Object Oriented Concepts
+
+##Classes
+* Ruby classes do not support overloading functions
+* Instance variables may be accessed using a method, but preferred to access via attribute getters and setters:
+    * **attr_accessor** :<%= bracketize "variable"%> #=> reads and writes to <%= bracketize "variable"%> 
+    * **attr_reader** :<%= bracketize "variable"%> #=> reads value from <%= bracketize "variable"%>
+    * **attr_writer** :<%= bracketize "variable"%> #=> writes value to <%= bracketize "variable"%>
+
+##Class Example:
+
+**class** *ClassName* &lt; *Superclass* **include** *Mod*&nbsp; &nbsp; # Supercalss is a parent class  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+# Mod is a module we include  
+&nbsp; &nbsp; **@***var1* 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # class instance variable  
+&nbsp; &nbsp; **attr_accessor** *:var2, :var3*
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; # attribute accessor  
+        
+&nbsp; &nbsp; **def initialize (** *params* **)** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # initialization function, called by .new  
+&nbsp; &nbsp; &nbsp; &nbsp; **@***var2* = ... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # assign instance variable  
+&nbsp; &nbsp; &nbsp; &nbsp; **@@***var3* = ... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   # assign class variable  
+&nbsp; &nbsp; end  
+        
+&nbsp; &nbsp; **def** *func1* **(** *params* **)**...**end** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # instance method  
+&nbsp; &nbsp; **def self.***func2** **(** *params* **)**...**end**&nbsp; &nbsp; &nbsp; &nbsp;# class method  
+**end**
+
+a = **ClassName.new** *params*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # initialize object  
+a.**func1** *params*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # call instance method  
+**ClassName.func2** *params*&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # call class method  
+
+
+##Modules
+* modules are containers for additional definitions
+* cannot be instantiated
+* often used by classes via "include" keyword
+
+##Module Example
+
+**module** *Mod*
+&nbsp; &nbsp; *var1* = ... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   # variable  
+&nbsp; &nbsp; **class** *Class1*...**end** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # class definitions  
+&nbsp; &nbsp; **def** *func1(params)*...**end** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  # instance method, can't call without first including it in a class  
+&nbsp; &nbsp; **def self.***func2(params)*...**end** &nbsp; &nbsp;# utility method  
+**end**
+
+a = **Mod::func2** *params* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # access elements with '::'
